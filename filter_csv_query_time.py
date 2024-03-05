@@ -2,12 +2,17 @@ import csv
 import re
 
 # 輸入檔案和輸出檔案
-input_file = 'downloaded-logs-20240304-143200.csv'
-output_file = 'filter_time_gpk.csv'
+input_file = 'downloaded-logs-20240305-143140.csv'
+output_file = 'filter_time_vp.csv'
 
 # 目標條件
 target_condition_column = 'Query_time'
-target_condition_value = 1
+target_condition_value = 0
+target_str = "SELECT \
+    t.TABLE_SCHEMA AS TableSchema,\
+    t.TABLE_NAME AS TableName,\
+    t.TABLE_TYPE AS TableType,\
+    t.TABLE_COMMENT AS TableDescription"
 
 # 目標列的名稱（textPayload）
 target_column = 'textPayload'
@@ -30,6 +35,8 @@ with open(input_file, 'r', newline='', encoding='utf-8') as csv_input, \
         if target_column in row:
             # 從 textPayload 中提取 Query_time
             match = re.search(r'Query_time: ([0-9.]+)', row[target_column])
+            if target_str:
+                match_str = re.search(target_str, row[target_column])
             
             if match:
                 query_time = float(match.group(1))
