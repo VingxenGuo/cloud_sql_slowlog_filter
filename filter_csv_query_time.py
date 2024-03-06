@@ -2,10 +2,6 @@ import csv
 import re
 import sys
 
-# 获取命令行参数
-
-
-
 # 輸入檔案和輸出檔案
 input_file = input('target file name:')
 output_file = 'filter_time.csv'
