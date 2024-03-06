@@ -1,1 +1,0 @@
-insertId,labels.INSTANCE_UID,labels.LOG_BUCKET_NUM,labels.SOURCE_ID,logName,receiveLocation,receiveTimestamp,resource.labels.database_id,resource.labels.project_id,resource.labels.region,resource.type,textPayload,timestamp
